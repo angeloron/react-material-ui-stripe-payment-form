@@ -15,7 +15,7 @@ const devPublishableKeyGet = () => {
 }
 
 export const publishableKeyGet = () => {
-    const url = baseUrl + "/publishableKeyGet.php"
+    // const url = baseUrl + "/publishableKeyGet.php"
     return new Promise(async resolve => {
         const { data: { publishableKey } } = localHost
             ? await devPublishableKeyGet()
