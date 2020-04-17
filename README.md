@@ -25,8 +25,11 @@ All those libraries put together in a nice interface easy to use and implement.
 <!-- Available as an [npm package](https://www.npmjs.com/package/react-material-ui-stripe-payment-form). -->
 
 ```sh
-// with git
+// with gitlab
 git clone https://gitlab.com/angeloron/react-material-ui-stripe-payment-form
+
+// with github
+git clone https://github.com/angeloron/react-material-ui-stripe-payment-form.git
 ```
 
 ## Sponsor this project
