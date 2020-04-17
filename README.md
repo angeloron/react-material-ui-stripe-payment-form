@@ -58,7 +58,7 @@ Therefore if you modify the fields you'll have to adjust the initial state in th
 
 You simply need to save your Stripe keys in [/public/keys.php](/public/keys.php).
 
-In that example will only enable credit card payments but you can of course other type of payments by either editing the [payment form](/src/Components/Views/Forms/PaymentForm.js) or adding a form by following the step above.
+In that example I only enabled credit card payments but you can of course add other type of payments by either editing the [payment form](/src/Components/Views/Forms/PaymentForm.js) or adding a step/form by following the step above.
 
 ```jsx
 const StepContent = ({ step }) => {
@@ -92,7 +92,7 @@ To change the theme color, font, etc. go to [/src/Components/constants/theme.js]
 ## Questions
 
 For *how-to* questions and other non-issues,
-please use [StackOverflow](https://stackoverflow.com/questions/tagged/material-ui) instead of Github issues or contact me personaly via my [website](https://angeloron.com/contact).
+please use [StackOverflow](https://stackoverflow.com/questions) instead of Github issues or contact me personaly via my [website](https://angeloron.com/contact).
 
 ## License
 
