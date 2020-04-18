@@ -37,7 +37,7 @@ const PaymentForm = () => {
                 <Typography variant="h6">Payment Data</Typography>
             </Grid>
             <Grid container item xs={12} sm={9} justify="space-between">
-                {cardsLogo.map(e => <img key={e} src={`/cards/${e}.png`} alt={e} width="50px" align="bottom" style={{ padding: "0 5px" }} />)}
+                {cardsLogo.map(e => <img key={e} src={`./cards/${e}.png`} alt={e} width="50px" align="bottom" style={{ padding: "0 5px" }} />)}
             </Grid>
         </Grid>
         <Grid item xs={6} sm={3}>
