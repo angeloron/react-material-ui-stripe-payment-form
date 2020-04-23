@@ -15,11 +15,11 @@ const devPublishableKeyGet = () => {
 }
 
 export const publishableKeyGet = () => {
-    // const url = baseUrl + "/publishableKeyGet.php"
+    const url = baseUrl + "/publishableKeyGet.php";
     return new Promise(async resolve => {
         const { data: { publishableKey } } = localHost
-            ? await devPublishableKeyGet()
-            :  await devPublishableKeyGet() //await Axios.get(url);
+        ? await devPublishableKeyGet()
+        : await Axios.get(url);
         resolve(publishableKey)
     })
 }
@@ -32,18 +32,28 @@ export const clientSecretPull = (data) => {
     })
 }
 
-export const clientSecretDataObjectConverter = ({ staff, arrivaldate, service, fsm, email: receipt_email, currency, amount }) => ({
-    amount: amount * 100,
-    currency: currency.code,
-    cardType: "card",
-    receipt_email,
-    metadata: {
-        staff,
-        arrivaldate,
-        service,
-        fsm,
-    }
-})
+export const clientSecretDataObjectConverter = ({
+    staff,
+    arrivaldate,
+    service,
+    fsm,
+    email: receipt_email,
+    currency,
+    amount
+}) => (
+        {
+            amount: amount * 100,
+            currency: currency.code,
+            cardType: "card",
+            receipt_email,
+            metadata: {
+                staff,
+                arrivaldate,
+                service,
+                fsm,
+            }
+        }
+    )
 
 export const stripeDataObjectConverter = ({ firstname, lastname, email, line1, line2, postal_code, city, country, }, cardElement) => ({
     payment_method: {

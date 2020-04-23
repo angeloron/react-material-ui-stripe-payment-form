@@ -4,7 +4,7 @@ import {
     Grid,
     Typography
 } from "@material-ui/core";
-import { useStateValue } from "../../StateContext";
+import { useStateValue } from "../../stateContext";
 
 const ServiceForm = () => {
 

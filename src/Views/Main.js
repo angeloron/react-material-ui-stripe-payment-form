@@ -6,7 +6,6 @@ import { Elements, } from "@stripe/react-stripe-js";
 import { loadStripe } from '@stripe/stripe-js';
 import { publishableKeyGet } from '../constants/functions'
 
-
 const useStyles = makeStyles(theme => ({
     boxWrapper: {
         marginBottom: "55px",

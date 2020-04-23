@@ -23,4 +23,4 @@ const Connector = withStyles(theme => ({
     },
 }))(StepConnector);
 
-export default Connector
+export default Connector;

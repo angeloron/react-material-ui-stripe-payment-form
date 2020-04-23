@@ -23,9 +23,13 @@ import {
     useElements,
     CardCvcElement,
 } from '@stripe/react-stripe-js';
-import { useStateValue } from "../StateContext";
+import { useStateValue } from "../stateContext";
 import StepConnector from './StepConnector'
-import { clientSecretPull, stripeDataObjectConverter, clientSecretDataObjectConverter } from '../constants/functions';
+import {
+    clientSecretPull,
+    stripeDataObjectConverter,
+    clientSecretDataObjectConverter
+} from '../constants/functions';
 
 // OVERALL STYLE
 const style = makeStyles(theme => ({
@@ -99,18 +103,14 @@ const Steppers = () => {
         const { paymentIntent, error } = await stripe.confirmCardPayment(clientSecret, stripeDataObject);
 
         if (error) {
-            // Handle payment error
-            // console.log({ error })
             setCardStatus(false);
             setCardMessage(error.message)
-            setActiveStep((prevActiveStep) => prevActiveStep + 1);
         } else if (paymentIntent && paymentIntent.status === "succeeded") {
-            // Handle payment success
-            setActiveStep(3);
             setCardStatus(true);
             setCardMessage("");
             dispatch({ type: 'emptyFormValue' });
         }
+        setActiveStep((prevActiveStep) => prevActiveStep + 1);
         setLoading(false);
     }
 
@@ -125,58 +125,55 @@ const Steppers = () => {
                 )}
             </Stepper>
             <Box className={classes.mainBox}>
-                <Grid
-                    container
-                    spacing={3}
-                    direction="column"
-                    justify="space-around"
-                    alignItems="center"
-                    style={{ height: "400px" }}
-                >
-                    {activeStep === 3
-                        ?
-                        <>
-                            {cardStatus
-                                ?
-                                <SentimentVerySatisfied fontSize="large" color="primary" />
-                                :
-                                <SentimentVeryDissatisfied fontSize="large" color="error" />
-                            }
-                            <Typography variant="h4">
-                                {cardMessage}
-                            </Typography>
-                            <Button onClick={cardStatus ? handleReset : handleBack} className={classes.button}>
-                                {cardStatus ? "Reset" : "Back"}
-                            </Button>
-                        </>
-                        :
-                        <form className={classes.form} onSubmit={e => { e.preventDefault(); handleNext() }}>
-                            <Grid container spacing={3}>
-                                <StepContent step={activeStep} />
-                                <Grid container item justify="flex-end">
-                                    <Button disabled={activeStep === 0} className={classes.button} onClick={handleBack}>
-                                        Back
-                                </Button>
-                                    <Button
-                                        variant="contained"
-                                        color="primary"
-                                        className={classes.button}
-                                        type="submit"
-                                        disabled={loading}
-                                    >
-                                        {
-                                            loading
-                                                ?
-                                                <CircularProgress size={24} />
-                                                :
-                                                activeStep === 2 ? 'Pay' : 'Next'
-                                        }
+                {activeStep === 3 ?
+                    <Grid
+                        container
+                        spacing={3}
+                        direction="column"
+                        justify="space-around"
+                        alignItems="center"
+                        style={{ height: "400px" }}
+                    >
+                        {cardStatus
+                            ?
+                            <SentimentVerySatisfied fontSize="large" color="primary" />
+                            :
+                            <SentimentVeryDissatisfied fontSize="large" color="error" />
+                        }
+                        <Typography variant="h4">
+                            {cardMessage}
+                        </Typography>
+                        <Button onClick={cardStatus ? handleReset : handleBack} className={classes.button}>
+                            {cardStatus ? "Reset" : "Back"}
+                        </Button>
+                    </Grid>
+                    :
+                    <form autoComplete="off" className={classes.form} onSubmit={e => { e.preventDefault(); handleNext() }}>
+                        <Grid container spacing={3}>
+                            <StepContent step={activeStep} />
+                            <Grid container item justify="flex-end">
+                                <Button disabled={activeStep === 0} className={classes.button} onClick={handleBack}>
+                                    Back
                                     </Button>
-                                </Grid>
+                                <Button
+                                    variant="contained"
+                                    color="primary"
+                                    className={classes.button}
+                                    type="submit"
+                                    disabled={loading}
+                                >
+                                    {
+                                        loading
+                                            ?
+                                            <CircularProgress size={24} />
+                                            :
+                                            activeStep === 2 ? 'Pay' : 'Next'
+                                    }
+                                </Button>
                             </Grid>
-                        </form>
-                    }
-                </Grid>
+                        </Grid>
+                    </form>
+                }
             </Box>
         </>
     );

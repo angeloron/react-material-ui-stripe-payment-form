@@ -5,7 +5,7 @@ import {
     Typography
 } from "@material-ui/core";
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import { useStateValue } from "../../StateContext";
+import { useStateValue } from "../../stateContext";
 
 const ContactForm = () => {
 
@@ -135,7 +135,6 @@ const ContactForm = () => {
         </Grid>
         <Grid item xs={12} sm={4}>
             <Autocomplete
-                value={formValues.country}
                 options={countries}
                 getOptionLabel={option => option.name}
                 renderInput={params =>
@@ -148,14 +147,14 @@ const ContactForm = () => {
                         {...params}
                     />
                 }
+                value={formValues.country}
                 onChange={(event, value) => {
                     dispatch({
                         type: 'editFormValue',
                         key: "country",
                         value: value
                     })
-                }
-                }
+                }}
             />
         </Grid>
     </>

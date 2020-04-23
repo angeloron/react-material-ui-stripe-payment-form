@@ -11,8 +11,8 @@ import {
     CardNumberElement,
     CardExpiryElement
 } from "@stripe/react-stripe-js";
-import { useStateValue } from "../../StateContext";
-import StripeInput from './StripeInput'
+import { useStateValue } from "../../stateContext";
+import StripeInput from '../../components/StripeInput'
 
 const PaymentForm = () => {
 
@@ -37,7 +37,7 @@ const PaymentForm = () => {
                 <Typography variant="h6">Payment Data</Typography>
             </Grid>
             <Grid container item xs={12} sm={9} justify="space-between">
-                {cardsLogo.map(e => <img key={e} src={`/cards/${e}.png`} alt={e} width="50px" align="bottom" style={{ padding: "0 5px" }} />)}
+                {cardsLogo.map(e => <img key={e} src={`./cards/${e}.png`} alt={e} width="50px" align="bottom" style={{ padding: "0 5px" }} />)}
             </Grid>
         </Grid>
         <Grid item xs={6} sm={3}>
@@ -52,17 +52,16 @@ const PaymentForm = () => {
                         variant="outlined"
                         fullWidth
                         {...params}
-                        value={formValues.currency}
                     />
                 }
+                value={formValues.currency}
                 onChange={(event, value) => {
                     dispatch({
-                        type: 'editFormValue',
+                        type: "editFormValue",
                         key: "currency",
                         value: value
                     })
-                }
-                }
+                }}
             />
         </Grid>
         <Grid item xs={6} sm={3}>
@@ -75,7 +74,7 @@ const PaymentForm = () => {
                 value={formValues.amount}
                 onChange={e =>
                     dispatch({
-                        type: 'editFormValue',
+                        type: "editFormValue",
                         key: "amount",
                         value: e.target.value.replace(/[^0-9,.]/g, '')
                     })
@@ -90,10 +89,10 @@ const PaymentForm = () => {
                 required
                 fullWidth
                 InputProps={{
+                    inputComponent: StripeInput,
                     inputProps: {
                         component: CardNumberElement
                     },
-                    inputComponent: StripeInput
                 }}
                 InputLabelProps={{ shrink: true }}
             />

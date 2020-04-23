@@ -1,4 +1,3 @@
-
 const initialState = {
     formValues: {
         date: "",
@@ -16,7 +15,6 @@ const initialState = {
         currency: null,
         amount: "",
     },
-
 };
 
 const reducer = (state, action) => {

@@ -10,7 +10,7 @@ import {
     Security,
     Info
 } from "@material-ui/icons";
-import NoticeDialog from "./LegalNoticePopus.js/NoticeDialog";
+import NoticeDialog from "./LegalNoticePopups/NoticeDialog";
 
 const Footer = () => {
 
