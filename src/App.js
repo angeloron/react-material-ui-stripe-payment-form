@@ -6,7 +6,7 @@ import theme from './constants/theme';
 import Header from "./views/Header";
 import Main from "./views/Main"
 import Footer from "./views/Footer";
-import LegalNoticePopup from "./views/LegalNoticePopus.js/LegalNoticePopup";
+import LegalNoticePopup from "./views/LegalNoticePopups/LegalNoticePopup";
 
 const App = () => 
    <ThemeProvider theme={theme}>
