@@ -116,16 +116,16 @@ const Steppers = () => {
 
     return (
         <>
-            <Stepper alternativeLabel activeStep={activeStep} connector={<StepConnector />} className={classes.stepper}>
+            <Stepper alternativeLabel className={classes.stepper} connector={<StepConnector />} activeStep={activeStep}>
                 {/* Change the number of loops here based on StepContent */}
-                {[1, 2, 3].map(e => (
+                {[1, 2, 3].map(e =>
                     <Step key={e}>
                         <StepLabel StepIconComponent={StepperIcons} />
                     </Step>
-                ))}
+                )}
             </Stepper>
             <Box className={classes.mainBox}>
-                {activeStep === 3 ? (
+                {activeStep === 3 ?
                     <Grid
                         container
                         spacing={3}
@@ -147,33 +147,33 @@ const Steppers = () => {
                             {cardStatus ? "Reset" : "Back"}
                         </Button>
                     </Grid>
-                ) : (
-                        <form autoComplete="off" className={classes.form} onSubmit={e => { e.preventDefault(); handleNext() }}>
-                            <Grid container spacing={3}>
-                                <StepContent step={activeStep} />
-                                <Grid container item className={classes.buttonWrapper}>
-                                    <Button disabled={activeStep === 0} onClick={handleBack} className={classes.button}>
-                                        Back
+                    :
+                    <form autoComplete="off" className={classes.form} onSubmit={e => { e.preventDefault(); handleNext() }}>
+                        <Grid container spacing={3}>
+                            <StepContent step={activeStep} />
+                            <Grid container item justify="flex-end">
+                                <Button disabled={activeStep === 0} className={classes.button} onClick={handleBack}>
+                                    Back
                                     </Button>
-                                    <Button
-                                        variant="contained"
-                                        color="primary"
-                                        className={classes.button}
-                                        type="submit"
-                                        disabled={loading}
-                                    >
-                                        {
-                                            loading
-                                                ?
-                                                <CircularProgress size={24} />
-                                                :
-                                                activeStep === 2 ? 'Pay' : 'Next'
-                                        }
-                                    </Button>
-                                </Grid>
+                                <Button
+                                    variant="contained"
+                                    color="primary"
+                                    className={classes.button}
+                                    type="submit"
+                                    disabled={loading}
+                                >
+                                    {
+                                        loading
+                                            ?
+                                            <CircularProgress size={24} />
+                                            :
+                                            activeStep === 2 ? 'Pay' : 'Next'
+                                    }
+                                </Button>
                             </Grid>
-                        </form>
-                    )}
+                        </Grid>
+                    </form>
+                }
             </Box>
         </>
     );

@@ -39,6 +39,10 @@ A live demo is available [here](https://angeloron.gitlab.io/react-material-ui-st
 
 <img width="600px" src="./preview.gif" alt="preview">
 
+## Documentation
+
+Find a detailed documentation [here](https://t.co/ylkqiFJ64u?amp=1&fbclid=IwAR24ciJ4hhnHxdwKhAM3VyD8sb75j_rl0jUoebgkLUXTsuRLvzSUBnJrcSo)
+
 ## Usage
 
 ### Change Icons
