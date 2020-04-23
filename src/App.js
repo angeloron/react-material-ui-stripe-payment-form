@@ -1,12 +1,12 @@
 import React from 'react';
-import { StateProvider } from './StateContext';
+import { StateProvider } from './stateContext';
 import { ThemeProvider } from '@material-ui/styles';
 import theme from './constants/theme';
 
-import Header from "./Components/Header";
-import Main from "./Views/Main"
-import Footer from './Components/Footer';
-import LegalNoticePopup from './Components/LegalNoticePopus.js/LegalNoticePopup';
+import Header from "./views/Header";
+import Main from "./views/Main"
+import Footer from "./views/Footer";
+import LegalNoticePopup from "./views/LegalNoticePopus.js/LegalNoticePopup";
 
 const App = () => 
    <ThemeProvider theme={theme}>

@@ -11,8 +11,8 @@ import {
     CardNumberElement,
     CardExpiryElement
 } from "@stripe/react-stripe-js";
-import { useStateValue } from "../../StateContext";
-import StripeInput from './StripeInput'
+import { useStateValue } from "../../stateContext";
+import StripeInput from '../../components/StripeInput'
 
 const PaymentForm = () => {
 
@@ -52,17 +52,16 @@ const PaymentForm = () => {
                         variant="outlined"
                         fullWidth
                         {...params}
-                        value={formValues.currency}
                     />
                 }
+                value={formValues.currency}
                 onChange={(event, value) => {
                     dispatch({
-                        type: 'editFormValue',
+                        type: "editFormValue",
                         key: "currency",
                         value: value
                     })
-                }
-                }
+                }}
             />
         </Grid>
         <Grid item xs={6} sm={3}>
@@ -75,7 +74,7 @@ const PaymentForm = () => {
                 value={formValues.amount}
                 onChange={e =>
                     dispatch({
-                        type: 'editFormValue',
+                        type: "editFormValue",
                         key: "amount",
                         value: e.target.value.replace(/[^0-9,.]/g, '')
                     })
@@ -90,10 +89,10 @@ const PaymentForm = () => {
                 required
                 fullWidth
                 InputProps={{
+                    inputComponent: StripeInput,
                     inputProps: {
                         component: CardNumberElement
                     },
-                    inputComponent: StripeInput
                 }}
                 InputLabelProps={{ shrink: true }}
             />

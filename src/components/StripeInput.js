@@ -1,11 +1,8 @@
-// Wrapper around the actual Stripe <*Element>, so that it can be used as `inputComponent`
-// for Material UI's <Input>. Also adds some styling.
-
-import React from 'react'
+import React, { useRef, useImperativeHandle } from 'react'
 
 const StripeInput = ({ component: Component, inputRef, ...other }) => {
-    const elementRef = React.useRef();
-    React.useImperativeHandle(inputRef, () => ({
+    const elementRef = useRef();
+    useImperativeHandle(inputRef, () => ({
         focus: () => elementRef.current.focus
     }));
 

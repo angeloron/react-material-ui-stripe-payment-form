@@ -23,9 +23,13 @@ import {
     useElements,
     CardCvcElement,
 } from '@stripe/react-stripe-js';
-import { useStateValue } from "../StateContext";
+import { useStateValue } from "../stateContext";
 import StepConnector from './StepConnector'
-import { clientSecretPull, stripeDataObjectConverter, clientSecretDataObjectConverter } from '../constants/functions';
+import {
+    clientSecretPull,
+    stripeDataObjectConverter,
+    clientSecretDataObjectConverter
+} from '../constants/functions';
 
 // OVERALL STYLE
 const style = makeStyles(theme => ({
@@ -73,7 +77,7 @@ const Steppers = () => {
     const [loading, setLoading] = useState(false);
     const [cardStatus, setCardStatus] = useState(true);
     const [cardMessage, setCardMessage] = useState("");
-    
+
     const stripe = useStripe();
     const elements = useElements();
     const [{ formValues }, dispatch] = useStateValue();
@@ -99,25 +103,21 @@ const Steppers = () => {
         const { paymentIntent, error } = await stripe.confirmCardPayment(clientSecret, stripeDataObject);
 
         if (error) {
-            // Handle payment error
-            // console.log({ error })
             setCardStatus(false);
             setCardMessage(error.message)
-            setActiveStep((prevActiveStep) => prevActiveStep + 1);
         } else if (paymentIntent && paymentIntent.status === "succeeded") {
-            // Handle payment success
-            setActiveStep(3);
             setCardStatus(true);
             setCardMessage("");
             dispatch({ type: 'emptyFormValue' });
         }
+        setActiveStep((prevActiveStep) => prevActiveStep + 1);
         setLoading(false);
     }
 
     return (
         <>
             <Stepper alternativeLabel activeStep={activeStep} connector={<StepConnector />} className={classes.stepper}>
-            {/* Change the number of loops here based on StepContent */}
+                {/* Change the number of loops here based on StepContent */}
                 {[1, 2, 3].map(e => (
                     <Step key={e}>
                         <StepLabel StepIconComponent={StepperIcons} />
@@ -136,26 +136,16 @@ const Steppers = () => {
                     >
                         {cardStatus
                             ?
-                            <>
-                                <SentimentVerySatisfied fontSize="large" color="primary" />
-                                <Typography className={classes.instructions} variant="h4">
-                                    Thank you for your donation.
-                                </Typography>
-                                <Button onClick={handleReset} className={classes.button}>
-                                    Reset
-                                </Button>
-                            </>
+                            <SentimentVerySatisfied fontSize="large" color="primary" />
                             :
-                            <>
-                                <SentimentVeryDissatisfied fontSize="large" color="error" />
-                                <Typography className={classes.instructions} variant="h4">
-                                    Oops... {cardMessage}
-                                </Typography>
-                                <Button onClick={handleBack} className={classes.button}>
-                                    Back
-                                </Button>
-                            </>
+                            <SentimentVeryDissatisfied fontSize="large" color="error" />
                         }
+                        <Typography variant="h4">
+                            {cardMessage}
+                        </Typography>
+                        <Button onClick={cardStatus ? handleReset : handleBack} className={classes.button}>
+                            {cardStatus ? "Reset" : "Back"}
+                        </Button>
                     </Grid>
                 ) : (
                         <form autoComplete="off" className={classes.form} onSubmit={e => { e.preventDefault(); handleNext() }}>
