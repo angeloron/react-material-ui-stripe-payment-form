@@ -47,7 +47,7 @@ Find a detailed documentation [here](https://t.co/ylkqiFJ64u?amp=1&fbclid=IwAR24
 ### Change Icons
 You can change the icons in [/src/Components/Views/StepperIcons.js](/src/Components/Views/StepperIcons.js). You'll find the list of icons available at [Material-UI](https://material-ui.com/components/material-icons/).
 
-### Add ore Remove steps
+### Add or Remove steps
 To adjust the number of steps go to [/src/Components/Views/Stepper.js](/src/Components/Views/Stepper.js). There you'll find a function call ```StepContent``` with the list of Forms being used:
 
 This application uses [React Hooks](https://reactjs.org/docs/hooks-intro.html), including useContext to keep track of the data entered in the form.
