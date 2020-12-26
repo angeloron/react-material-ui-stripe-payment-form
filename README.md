@@ -32,10 +32,6 @@ git clone https://gitlab.com/angeloron/react-material-ui-stripe-payment-form
 git clone https://github.com/angeloron/react-material-ui-stripe-payment-form.git
 ```
 
-## Sponsor this project
-
-via [Patreon](https://www.patreon.com/angeloron)
-
 ## Examples
 
 A live demo is available [here](https://angeloron.gitlab.io/react-material-ui-stripe-payment-form/).
