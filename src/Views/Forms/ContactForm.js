@@ -5,7 +5,7 @@ import {
     Typography
 } from "@material-ui/core";
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import { useStateValue } from "../../stateContext";
+import { useStateValue } from "../../StateContext";
 
 const ContactForm = () => {
 

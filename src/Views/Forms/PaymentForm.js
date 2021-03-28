@@ -11,7 +11,7 @@ import {
     CardNumberElement,
     CardExpiryElement
 } from "@stripe/react-stripe-js";
-import { useStateValue } from "../../stateContext";
+import { useStateValue } from "../../StateContext";
 import StripeInput from '../../components/StripeInput'
 
 const PaymentForm = () => {
