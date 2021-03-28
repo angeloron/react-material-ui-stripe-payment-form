@@ -1,14 +1,14 @@
 import React from 'react';
-import { StateProvider } from './stateContext';
+import { StateProvider } from './StateContext';
 import { ThemeProvider } from '@material-ui/styles';
 import theme from './constants/theme';
 
-import Header from "./views/Header";
-import Main from "./views/Main"
-import Footer from "./views/Footer";
-import LegalNoticePopup from "./views/LegalNoticePopups/LegalNoticePopup";
+import Header from "./Views/Header";
+import Main from "./Views/Main"
+import Footer from "./Views/Footer";
+import LegalNoticePopup from "./Views/LegalNoticePopups/LegalNoticePopup";
 
-const App = () => 
+const App = () =>
    <ThemeProvider theme={theme}>
     <StateProvider>
       <div style={{ flexGrow: 1 }}>

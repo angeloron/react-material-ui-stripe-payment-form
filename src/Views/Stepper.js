@@ -23,7 +23,7 @@ import {
     useElements,
     CardCvcElement,
 } from '@stripe/react-stripe-js';
-import { useStateValue } from "../stateContext";
+import { useStateValue } from "../StateContext";
 import StepConnector from './StepConnector'
 import {
     clientSecretPull,
@@ -96,6 +96,7 @@ const Steppers = () => {
 
         setLoading(true);
 
+        console.log(formValues);
         const clientSecretDataObject = clientSecretDataObjectConverter(formValues);
         const clientSecret = await clientSecretPull(clientSecretDataObject);
         const cardElement = elements.getElement(CardCvcElement);
