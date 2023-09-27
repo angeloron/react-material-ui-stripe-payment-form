@@ -4,7 +4,7 @@
   </a>
     &nbsp;&nbsp;&nbsp;
   <a href="https://material-ui.com/" rel="noopener" target="_blank">
-    <img height="80" src="https://material-ui.com/static/logo_raw.svg" alt="Material-UI logo">
+    <img height="80" src="https://v4.mui.com/static/logo_raw.svg" alt="Material-UI logo">
   </a>
     &nbsp;&nbsp;&nbsp;
   <a href="https://stripe.com/" rel="noopener" target="_blank">
